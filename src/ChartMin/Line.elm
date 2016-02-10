@@ -4,6 +4,7 @@ module ChartMin.Line
   , chart
   )where
 
+import Html
 import Native.ChartMin
 
 type alias Dataset =
@@ -46,3 +47,9 @@ defaultData =
   { labels = []
   , datasets = []
   }
+
+chart : List Html.Attribute -> Dataset -> Html
+
+-- PLAN: Create a signal through which we can send datasets. On the javascript
+-- side, which I assume can be defined in a Native module, we will listen to
+-- this signal via a port. When values arrive, we'll update the chart.
